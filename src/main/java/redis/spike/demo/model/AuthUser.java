@@ -3,7 +3,6 @@ package redis.spike.demo.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class AuthUser extends User implements UserDetails {
@@ -16,7 +15,7 @@ public class AuthUser extends User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        return new ArrayList<>();
+        return super.getRole().getGrantedAuthorities();
     }
 
     @Override

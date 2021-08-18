@@ -3,6 +3,8 @@ package redis.spike.demo.model;
 import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +26,7 @@ public class User implements Serializable {
         this.accountNonExpired = user.isAccountNonExpired();
         this.credentialsNonExpired = user.isCredentialsNonExpired();
         this.accountNonLocked = user.isAccountNonLocked();
+        this.role = user.getRole();
     }
 
     @Id
@@ -44,5 +47,9 @@ public class User implements Serializable {
     private boolean credentialsNonExpired;
     @Column(name = "accountNonLocked")
     private boolean accountNonLocked;
+
+    @Column(name= "role")
+    @Enumerated(EnumType.STRING)
+    private RoleProvider role;
 
 }
